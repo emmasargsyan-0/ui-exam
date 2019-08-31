@@ -1,0 +1,186 @@
+
+<div class="sis-container" (scroll)="cardscroll($event)" 
+(scroll)="secondcardscroll($event)" (scroll)="headerscroll($event)" > 
+  <div class="sis-header__title"  [ngStyle]="{'transform': 'translateY(' + headerscrollx + 'px)'}"> Synergy Summer School 2019 </div>
+    
+  <div class="sis-body">
+    <mat-sidenav-container>
+      <mat-sidenav  class="sis-card__sidenav" #left position="end">
+        <div *ngIf="isEditButton">
+          <p>
+            Entity
+          </p>
+          <hr>
+          <form>
+            Display Name<br>
+            <input class="sis-card__displayname" type="text" name="DisplayName" value="cs_activity_properties">
+            <br><br>
+            System Name<br>
+            <input class="sis-card__systemname" type="text" name="SystemName" value="Acticity">
+            <br><br>
+            <mat-checkbox checked="true">Main Entity</mat-checkbox>
+          </form>
+          <button mat-button class="sis-card-greensubmitbutton"style="position: absolute; right: 10; bottom 10">Submit</button>    
+        </div> 
+        <div *ngIf="!isEditButton">
+          <p>
+            Add Section
+          </p><hr>
+          <form>
+            <div class="sis-card__languagebuttoncontainer">
+              <div> Section Name</div>
+              <mat-button-toggle-group class="sis-card__languagebutton" name="fontStyle" aria-label="Font Style" value="ARA">
+                <mat-button-toggle value="ARA">ARA</mat-button-toggle>
+                <mat-button-toggle value="ENG">ENG</mat-button-toggle>
+                <mat-button-toggle value="ARM">ARM</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+            <input class="sis-card__sectionname" type="text" name="DisplayName" value="">
+            <br><br>
+            System Name<br>
+            <input class="sis-card__systemname" type="text" name="SystemName" value="System Name *">
+            <br>
+          </form>
+          <button mat-button class="sis-card-greysubmitbutton">Submit</button>    
+        </div>             
+      </mat-sidenav>
+
+      <div>
+        <div class="sis-header__subtitle" >
+        <button mat-button class="sis-header__button" >  
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/></svg>
+        </button>
+        <div> User Interface Course Exam </div>
+        </div>
+
+        <mat-card class="sis-card">
+          <mat-card-header class="sis-card__header" [ngStyle]="{'transform': 'translateY(' + cardscrollx + 'px)'}">
+            <mat-card-title class="sis-card__title">Card 1 Title</mat-card-title>
+            <button mat-stroked-button (click)="left.open()" (click)="openEdit()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+              Edit
+            </button>
+          </mat-card-header>
+        <mat-card-content>
+          <br><p>
+          Card 1 proparty
+        </p>
+          <h3>
+            Value
+          </h3><br>
+
+          <p>
+            Card 1 second proparty
+          </p>
+          <h3>
+            Second Value
+          </h3><br>
+
+          <p>
+            Another proparty
+          </p>
+          <h3>
+            Enabled
+          </h3><br>
+
+          <p>
+            Description
+          </p>
+          <h3>
+            Long Long Description
+          </h3><br>
+
+          <p>
+            Another proparty
+          </p>
+          <h3>
+            Enabled
+          </h3><br>
+
+        </mat-card-content>
+        
+        
+        </mat-card>
+
+        <mat-card class="sis-secondcard"> 
+          <div>
+          <div class="sis-secondcard__beforeopening" *ngIf="!searchIsOpened" [ngStyle]="{'transform': 'translateY(' + secondcardscrollx + 'px)'}">
+            <div class="sis-secondcard__searchbuttoncontainer">
+              <mat-card-title>Second Card Title </mat-card-title>
+              <div class="sis-secondcard__searchbutton" (click)="openSearchMenu()"> 
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/>
+                </svg> 
+              </div> 
+            </div>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>Menu Item </button>
+              <button mat-button (click)="left.open()" (click)="openAddNew()" >Menu Item</button>
+              <button mat-menu-item>Menu Item </button>
+            </mat-menu>
+            <button class="sis-secondcard__addnewbutton" mat-button [matMenuTriggerFor]="menu">  
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+              Add New
+            </button>
+          </div>
+
+          <div class="sis-secondcard__afteropening" *ngIf="searchIsOpened">
+            <div class="sis-secondcard__searchbutton" (click)="openSearchMenu()"> 
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/>
+              </svg> 
+            </div> 
+            <mat-form-field class="sis-secondcard__formfield">
+            <textarea matInput placeholder="Search section / field"></textarea>
+            </mat-form-field>
+            <div class="sis-secondcard__closebutton" (click)="openSearchMenu()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+            </div> 
+
+
+          </div>
+
+          </div> 
+          
+          <table class="sis-secondcard__table">
+            <thead>
+            <tr>
+              <th class="sis-secondcard__table-title">
+                Table header
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+                    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+                      <button mat-icon-button disabled></button>
+                      {{node.item}}
+                      <svg  title="Remove" class="sis-secondcard__table-icon"> xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/><path d="M0 0h24v24H0z" fill="none"/> 
+                      </svg><br>
+                    </mat-tree-node>
+
+                    <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+                      <button mat-icon-button matTreeNodeToggle
+                              [attr.aria-label]="'toggle ' + node.filename">
+                        <mat-icon>
+                          {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                        </mat-icon>
+                      </button>   
+                      {{node.item}}
+                      <svg  title="Remove" class="sis-secondcard__table-icon"> xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/><path d="M0 0h24v24H0z" fill="none"/>
+                      </svg>
+                    </mat-tree-node>
+                  </mat-tree>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </mat-card> 
+
+      </div>
+
+
+    </mat-sidenav-container>
+  </div>
+</div>
